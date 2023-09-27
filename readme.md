@@ -26,10 +26,7 @@ go get github.com/squarehole/genericlist
 
 ### Description
 
-A simple facade library to wrap access to external IP Address geo-location information. Currently, it supports the following services:
-KeyCDN: https://tools.keycdn.com/geo
-
-Third party endpoint results is mapped to a well-known model, so you can easily switch between services.
+a versatile and type-safe generic list for any type that implements the 'comparable' contract, which allows for comparisons using
 
 ```go
 func CreateList() {
