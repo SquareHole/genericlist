@@ -1,5 +1,5 @@
 
-# brgeo: Facade for KeyCDN Geolocation
+# GenericList
 
 [![tag](https://img.shields.io/github/tag/squarehole/genericlist.svg)](https://github.com/squarehole/genericlist/releases)
 ![Go Version](https://img.shields.io/badge/Go-%3E%3D%201.21-%23007d9c)
