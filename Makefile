@@ -1,8 +1,12 @@
 
 BIN=go
+OUTPATH=./bin/
 
-build:
-	${BIN} build -v ./...
+build: create_build_folder
+	${BIN} build -v -o ${OUTPATH}
+
+create_build_folder:
+	@mkdir -p bin
 
 test:
 	go test -race -v ./...
