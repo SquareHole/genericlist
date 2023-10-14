@@ -1,6 +1,7 @@
 package genericlist
 
 import (
+	"math/rand"
 	"testing"
 )
 
@@ -561,4 +562,45 @@ func shouldPanic(t *testing.T, f func()) {
 	defer func() { _ = recover() }()
 	f()
 	t.Errorf("should have panicked")
+}
+
+func BenchmarkAdd(b *testing.B) {
+	list := &GenericList[int]{}
+	list.New()
+
+	for i := 0; i < b.N; i++ {
+		list.Add(rand.Intn(100))
+	}
+}
+
+func BenchmarkRemove(b *testing.B) {
+	list := &GenericList[int]{}
+	list.New()
+
+	for i := 0; i < 1000; i++ {
+		list.Add(rand.Int())
+	}
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		list.RemoveByValue(rand.Int())
+	}
+}
+
+func BenchmarkMap(b *testing.B) {
+	list := &GenericList[int]{}
+	list.New()
+
+	for i := 0; i < 1000; i++ {
+		list.Add(rand.Intn(100))
+	}
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		list.Map(func(item int) int {
+			return item * 2
+		})
+	}
 }

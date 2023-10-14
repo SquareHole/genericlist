@@ -3,6 +3,8 @@
 // the standard comparison operators (<, >, ==, etc.).
 package genericlist
 
+import "fmt"
+
 // GenericList represents a type-safe, dynamic list of comparable items.
 type GenericList[T comparable] struct {
 	data []T
@@ -22,7 +24,8 @@ func (g *GenericList[T]) Add(value T) {
 // Panics if the index is out of bounds.
 func (g *GenericList[T]) Remove(i int) {
 	if i < 0 || i > len(g.data)-1 {
-		panic("index is out of range")
+		msg := fmt.Sprintf("index is out of range: %d : %d", i, len(g.data))
+		panic(msg)
 	}
 	g.data = append(g.data[:i], g.data[i+1:]...)
 }
